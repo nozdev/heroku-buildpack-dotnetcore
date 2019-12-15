@@ -10,9 +10,12 @@ using Microsoft.AspNetCore.Hosting.Server;
 using System.IO;
 using Microsoft.Extensions.PlatformAbstractions;
 using System.Text.RegularExpressions;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace Propertynetcore.Model
 {
+    [Table("property")]
     public class Property
     {
         //OleDbConnection oledbConn;
