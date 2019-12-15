@@ -68,8 +68,6 @@ namespace Propertynetcore
             Config.Database = strConn[5];
             Config.Port = strConn[4];
             Config.ConnectionString = "host=" + Config.Server + ";port=" + Config.Port + ";database=" + Config.Database + ";uid=" + Config.User + ";pwd=" + Config.Pass + ";sslmode=Require;Trust Server Certificate=true;Timeout=1000";
-		    services.AddDbContext<BloggingContext>(options =>
-            options.UseNpgsql(Config.ConnectionString));
 
         }
 
