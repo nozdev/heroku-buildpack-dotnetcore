@@ -13,6 +13,49 @@ using Propertynetcore.Model;
 
 namespace Propertynetcore
 {
+	public class BloggingContext : DbContext
+    {
+        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Post> Posts { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            => 
+	    {
+	     string _connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
+            _connectionString.Replace("//", "");
+
+            char[] delimiterChars = { '/', ':', '@', '?' };
+            string[] strConn = _connectionString.Split(delimiterChars);
+            strConn = strConn.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+
+            Config.User = strConn[1];
+            Config.Pass = strConn[2];
+            Config.Server = strConn[3];
+            Config.Database = strConn[5];
+            Config.Port = strConn[4];
+            Config.ConnectionString = "host=" + Config.Server + ";port=" + Config.Port + ";database=" + Config.Database + ";uid=" + Config.User + ";pwd=" + Config.Pass + ";sslmode=Require;Trust Server Certificate=true;Timeout=1000";
+
+	    optionsBuilder.UseNpgsql(Config.ConnectionString);
+	    }
+    }
+
+    public class Blog
+    {
+        public int BlogId { get; set; }
+        public string Url { get; set; }
+
+        public List<Post> Posts { get; set; }
+    }
+
+    public class Post
+    {
+        public int PostId { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
+
+        public int BlogId { get; set; }
+        public Blog Blog { get; set; }
+    }
     public class Startup
     {
         public static string appRoutePath = string.Empty;
