@@ -16,7 +16,7 @@ namespace Propertynetcore
 {
 	public class BloggingContext : DbContext
     {
-        public DbSet<Property> Propertys { get; set; }
+        public DbSet<Property> property { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 	    {
