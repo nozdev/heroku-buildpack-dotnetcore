@@ -17,6 +17,11 @@ namespace Propertynetcore.Model
 {
     public class Property
     {
+        public int PropertyId
+		{
+			get;
+			set;
+		}
         //OleDbConnection oledbConn;
         public string Description { get; set; }
 
