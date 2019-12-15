@@ -80,11 +80,7 @@ namespace Propertynetcore
     services.AddDbContext<BloggingContext>();
 		services.AddControllersWithViews();
 		
-		    int a =-1;
-            using (var context = new BloggingContext())
-            {
-              a = context.Props.Count();
-            }
+		    
 
         }
 
