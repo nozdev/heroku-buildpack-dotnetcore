@@ -19,7 +19,6 @@ namespace Propertynetcore
         public DbSet<Post> Posts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => 
 	    {
 	     string _connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
             _connectionString.Replace("//", "");
