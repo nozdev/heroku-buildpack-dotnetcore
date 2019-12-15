@@ -15,7 +15,11 @@ namespace Propertynetcore.Repository
 
         public List<Property> GetSearchList(string latitude1, string latitude2)
         {
-           
+           int a =-1;
+            using (var context = new BloggingContext())
+            {
+              a = context.Props.Count();
+            }
  
             var property = new List<Property>();
             using (var sqlCon = new NpgsqlConnection(Config.ConnectionString))
@@ -34,7 +38,7 @@ namespace Propertynetcore.Repository
                         {
                             Property prop = new Property();
                             prop.Description = Convert.ToString(dr[1]).Replace("&apos;","'").Replace("&#47;", "/");
-                            prop.Address = Convert.ToString(dr[2]);
+                            prop.Address = Convert.ToString(a);
                             prop.State = Convert.ToString(dr[3]);
                             prop.Country = Convert.ToString(dr[4]);
                             prop.SubDivision = Convert.ToString(dr[5]);
