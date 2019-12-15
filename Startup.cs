@@ -16,7 +16,12 @@ namespace Propertynetcore
 {
 	public class BloggingContext : DbContext
     {
-        public DbSet<Property> property { get; set; }
+        public DbSet<Property> Props { get; set; }
+	  protected override void OnModelCreating(ModelBuilder modelBuilder)
+	    {
+		modelBuilder.Entity<Property>()
+		    .ToTable("property");
+	    }
     }
     
     public class Startup
