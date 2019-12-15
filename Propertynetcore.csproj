@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Session" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.0" />
