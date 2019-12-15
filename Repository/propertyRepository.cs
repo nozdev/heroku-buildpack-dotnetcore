@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Propertynetcore.Model;
 using Npgsql;
 using NpgsqlTypes;
+using Microsoft.EntityFrameworkCore;
 
 namespace Propertynetcore.Repository
 {
