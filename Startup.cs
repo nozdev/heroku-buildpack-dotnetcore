@@ -63,7 +63,6 @@ namespace Propertynetcore
 		
 		    int a =-1;
             var optionsBuilder = new DbContextOptionsBuilder<BloggingContext>();
-            optionsBuilder.UseNpgsql(Config.ConnectionString);
             using (var context = new BloggingContext(optionsBuilder.Options))
             {
               a = context.Props.Count();
