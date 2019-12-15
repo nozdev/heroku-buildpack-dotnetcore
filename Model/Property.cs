@@ -15,7 +15,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Propertynetcore.Model
 {
-    [Table("property")]
     public class Property
     {
         //OleDbConnection oledbConn;
