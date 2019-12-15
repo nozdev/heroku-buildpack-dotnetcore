@@ -15,13 +15,7 @@ namespace Propertynetcore.Repository
 
         public List<Property> GetSearchList(string latitude1, string latitude2)
         {
-            int a =-1;
-            var optionsBuilder = new DbContextOptionsBuilder<BloggingContext>();
-            optionsBuilder.UseNpgsql(Config.ConnectionString);
-            using (var context = new BloggingContext(optionsBuilder.Options))
-            {
-              a = context.Props.Count();
-            }
+           
  
             var property = new List<Property>();
             using (var sqlCon = new NpgsqlConnection(Config.ConnectionString))
