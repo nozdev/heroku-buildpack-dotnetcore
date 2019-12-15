@@ -22,6 +22,8 @@ namespace Propertynetcore
 	    {
 		modelBuilder.Entity<Property>()
 		    .ToTable("property");
+		 modelBuilder.Entity<Property>()
+            .HasKey(o => o.PropertyId);
 	    }
 	     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
