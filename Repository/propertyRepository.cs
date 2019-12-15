@@ -15,7 +15,8 @@ namespace Propertynetcore.Repository
         public List<Property> GetSearchList(string latitude1, string latitude2)
         {
             int a =-1;
-            using (var context = new BloggingContext())
+            var optionsBuilder = new DbContextOptionsBuilder<BloggingContext>();
+            using (var context = new BloggingContext(optionsBuilder.Options))
             {
               a = context.Props.Count();
             }
