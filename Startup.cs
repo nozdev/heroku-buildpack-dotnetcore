@@ -70,8 +70,6 @@ namespace Propertynetcore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-		services.AddDbContext<BloggingContext>(options =>
-            options.UseNpgsql(Configuration.GetConnectionString("BloggingContext")));
 
             //Get Database Connection 
             //Environment.SetEnvironmentVariable("DATABASE_URL", "postgres://fdhbjevexgwois:f03ca3e6d3653031f3407a8f9f8cbfaecc7ade5d9b7cd6c3185859bfe450b55f@ec2-184-73-169-163.compute-1.amazonaws.com:5432/d9lrbre1cgv2q4");
