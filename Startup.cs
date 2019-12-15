@@ -17,25 +17,6 @@ namespace Propertynetcore
 	public class BloggingContext : DbContext
     {
         public DbSet<Property> property { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-	    {
-	     string _connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
-            _connectionString.Replace("//", "");
-
-            char[] delimiterChars = { '/', ':', '@', '?' };
-            string[] strConn = _connectionString.Split(delimiterChars);
-            strConn = strConn.Where(x => !string.IsNullOrEmpty(x)).ToArray();
-
-            Config.User = strConn[1];
-            Config.Pass = strConn[2];
-            Config.Server = strConn[3];
-            Config.Database = strConn[5];
-            Config.Port = strConn[4];
-            Config.ConnectionString = "host=" + Config.Server + ";port=" + Config.Port + ";database=" + Config.Database + ";uid=" + Config.User + ";pwd=" + Config.Pass + ";sslmode=Require;Trust Server Certificate=true;Timeout=1000";
-
-	    optionsBuilder.UseNpgsql(Config.ConnectionString);
-	    }
     }
     
     public class Startup
@@ -51,7 +32,6 @@ namespace Propertynetcore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
 
             //Get Database Connection 
             //Environment.SetEnvironmentVariable("DATABASE_URL", "postgres://fdhbjevexgwois:f03ca3e6d3653031f3407a8f9f8cbfaecc7ade5d9b7cd6c3185859bfe450b55f@ec2-184-73-169-163.compute-1.amazonaws.com:5432/d9lrbre1cgv2q4");
@@ -68,6 +48,10 @@ namespace Propertynetcore
             Config.Database = strConn[5];
             Config.Port = strConn[4];
             Config.ConnectionString = "host=" + Config.Server + ";port=" + Config.Port + ";database=" + Config.Database + ";uid=" + Config.User + ";pwd=" + Config.Pass + ";sslmode=Require;Trust Server Certificate=true;Timeout=1000";
+
+    services.AddDbContext<BloggingContext>(options =>
+            options.UseNpgsql(Config.ConnectionString));
+		services.AddControllersWithViews();
 
         }
 
