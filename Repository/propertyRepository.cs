@@ -16,7 +16,7 @@ namespace Propertynetcore.Repository
         {
             using (var context = new BloggingContext())
             {
-              // do stuff
+              int a = context.Properties.Count();
             }
  
             var property = new List<Property>();
