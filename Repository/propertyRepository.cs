@@ -19,8 +19,11 @@ namespace Propertynetcore.Repository
             using (var context = new BloggingContext())
             {
 var blogs = context.Props
-    .FromSqlRaw("select getnearestprops({0}, {1});", Convert.ToDecimal(latitude1),Convert.ToDecimal(latitude2)).ToList();                
+    .FromSqlRaw("select * from getnearestprops({0}, {1});", Convert.ToDecimal(latitude1),Convert.ToDecimal(latitude2)).ToList();                
+            return blogs;
             }
+            
+         
  
             var property = new List<Property>();
             using (var sqlCon = new NpgsqlConnection(Config.ConnectionString))
