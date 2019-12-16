@@ -23,8 +23,12 @@ namespace Propertynetcore.Model
 			set;
 		}
         //OleDbConnection oledbConn;
-        public string Description { get; set; }
-
+	private string Desc;
+	public string Description
+	{
+		get{ return Desc.Replace("&apos;","'").Replace("&#47;", "/");;}
+		set{ Desc = value;}
+	}
         public string Address { get; set; }
 
         public string State { get; set; }
