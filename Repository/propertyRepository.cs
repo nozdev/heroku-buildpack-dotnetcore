@@ -19,7 +19,7 @@ namespace Propertynetcore.Repository
             using (var context = new BloggingContext())
             {
 var blogs = context.Props
-    .FromSqlRaw("select getnearestprops({0}, {1});", Convert.ToDouble(latitude1),Convert.ToDouble((latitude2)).ToList();                
+    .FromSqlRaw("select getnearestprops({0}, {1});", Convert.ToDouble(latitude1),Convert.ToDouble(latitude2)).ToList();                
             }
  
             var property = new List<Property>();
