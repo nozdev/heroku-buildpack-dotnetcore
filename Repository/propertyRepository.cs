@@ -18,7 +18,8 @@ namespace Propertynetcore.Repository
            int a =-1;
             using (var context = new BloggingContext())
             {
-              a = context.Props.Count();
+var blogs = context.Blogs
+    .FromSqlRaw("select getnearestprops({0}, {1});", latitude1,latitude2).ToList();                
             }
  
             var property = new List<Property>();
